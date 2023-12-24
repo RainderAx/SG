@@ -6,6 +6,7 @@ class Personnage:
     def __init__(self, x, y):
         self.x = x
         self.y = y
+        self.score = 0
 
     def deplacer(self, touche):
         if touche == pygame.K_LEFT:
@@ -22,9 +23,9 @@ class Personnage:
 
     def collision(self):
         # Vérifie si le personnage entre en collision avec un des bords de la map
-        if self.x < 0 or self.x >= largeur_fenetre/taille_case:
-            self.x = self.x % (largeur_fenetre/taille_case)
+        if self.x < 0 or self.x >= case_max_x:
+            self.x = self.x % (case_max_x)
 
-        elif self.y < 0 or self.y >= hauteur_fenetre/taille_case:
-            self.y = self.y % (largeur_fenetre/taille_case)
+        elif self.y < 0 or self.y >= case_max_y:
+            self.y = self.y % (case_max_y)
 
