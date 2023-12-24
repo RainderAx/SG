@@ -1,6 +1,6 @@
+
+#taille_carte
 taille_case = 50
-
-
 largeur_fenetre = 600
 hauteur_fenetre = 600
 
