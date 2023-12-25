@@ -27,8 +27,8 @@ class Piece:
                 if personnage.x == new_x and personnage.y == new_y:
                     break
                 else:
-                    personnage.x = new_x
-                    personnage.y = new_y
+                    self.x = new_x
+                    self.y = new_y
                     break
 
         else:
