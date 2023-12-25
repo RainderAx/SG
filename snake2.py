@@ -1,25 +1,21 @@
 import pygame
 from constantes import *
+from snake import Personnage
 
-class Personnage:
+class NvPers(Personnage):  
 
     def __init__(self, x, y):
-        self.x = x
-        self.y = y
-        self.score = 0
-
+        super().__init__(x, y)  
+        
     def deplacer(self, touche):
-        if touche == pygame.K_LEFT:
+        if touche == pygame.K_q:
             self.x -= 1
-        elif touche == pygame.K_RIGHT:
+        elif touche == pygame.K_d:
             self.x += 1
-        elif touche == pygame.K_UP:
+        elif touche == pygame.K_z:
             self.y -= 1
-        elif touche == pygame.K_DOWN:
+        elif touche == pygame.K_s:
             self.y += 1
-
-    def dessiner(self, fenetre):
-        pygame.draw.rect(fenetre, vert, (self.x * taille_case, self.y * taille_case, taille_case, taille_case))
 
     def collision(self):
 
@@ -29,3 +25,5 @@ class Personnage:
         elif self.y < 0 or self.y >= case_max_y:
             self.y = self.y % (case_max_y)
 
+    def dessiner(self, fenetre):
+        pygame.draw.rect(fenetre, violet, (self.x * taille_case, self.y * taille_case, taille_case, taille_case))

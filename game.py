@@ -2,7 +2,7 @@ import pygame
 import sys
 import random
 
-
+from snake2 import NvPers
 from snake import *
 from map import *
 from piece import Piece
@@ -19,6 +19,7 @@ def main():
 
    
     personnage = Personnage(1, 1)
+    pers2 = NvPers(10,10)
   
     pieces = []
 
@@ -37,6 +38,7 @@ def main():
             
             elif event.type == pygame.KEYDOWN:
                 personnage.deplacer(event.key)
+                pers2.deplacer(event.key)
         
         fenetre.fill(blanc)
 
@@ -44,13 +46,16 @@ def main():
         Carte.dessiner(fenetre)
      
         personnage.dessiner(fenetre)
+        pers2.dessiner(fenetre)
        
         for piece in pieces:
             piece.dessiner(fenetre)
 
         
         personnage.collision()
+        pers2.collision
         piece.collision(personnage)
+        piece.collision(pers2)
 
         piece.dessiner(fenetre)
         
@@ -58,6 +63,8 @@ def main():
         texte_score = font.render("Score:" + str(personnage.score), True, vert)
         fenetre.blit(texte_score, (10, 10))
 
+        texte_score = font.render("Score:" + str(pers2.score), True, violet)
+        fenetre.blit(texte_score, (10, 100))
       
         pygame.display.flip()
 
