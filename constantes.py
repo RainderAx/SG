@@ -11,4 +11,4 @@ case_max_y = hauteur_fenetre/taille_case
 blanc = (255, 255, 255)
 noir = (0, 0, 0)
 vert = (107, 142, 35)
-violet = (154,39,184)
+violet = (148,113,220)

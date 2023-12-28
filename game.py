@@ -53,7 +53,7 @@ def main():
 
         
         personnage.collision()
-        pers2.collision
+        pers2.collision()
         piece.collision(personnage)
         piece.collision(pers2)
 
