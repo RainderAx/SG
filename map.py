@@ -1,5 +1,4 @@
-import pygame
-from constantes import *
+from constantes import hauteur_fenetre,pygame
 
 
 largeur_fenetre = 600

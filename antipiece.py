@@ -1,6 +1,10 @@
-from piece import Piece
+from piece import *
 
 class anti(Piece): 
+    def __init__(self, x, y, coin_image):
+        self.x = x
+        self.y = y
+        self.coin_image = pygame.transform.scale(coin_image, (taille_case, taille_case))
 
     def collision(self, personnage):
             if (personnage.x == self.x) and (personnage.y == self.y):
@@ -20,3 +24,6 @@ class anti(Piece):
                         break
             else:
                 return False
+            
+    def dessiner(self, fenetre):
+        fenetre.blit(self.anti (self.x * taille_case, self.y * taille_case, taille_case, taille_case))

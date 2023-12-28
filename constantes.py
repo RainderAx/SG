@@ -1,3 +1,5 @@
+import pygame 
+
 
 #taille_carte
 taille_case = 50
@@ -12,3 +14,6 @@ blanc = (255, 255, 255)
 noir = (0, 0, 0)
 vert = (107, 142, 35)
 violet = (148,113,220)
+
+#skin
+coin_image = pygame.image.load("coin.jpg")

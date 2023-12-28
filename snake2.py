@@ -1,6 +1,4 @@
-import pygame
-from constantes import *
-from snake import Personnage
+from snake import *
 
 class NvPers(Personnage):  
         

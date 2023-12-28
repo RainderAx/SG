@@ -1,4 +1,3 @@
-import pygame
 import sys
 import random
 
@@ -23,7 +22,7 @@ def main():
   
     pieces = []
 
-    coin_image = pygame.image.load("coin.jpg")
+    
     piece = Piece(random.randint(0, case_max_x -1), random.randint(0, case_max_y -1),coin_image)
     pieces.append(piece)
 
