@@ -1,10 +1,11 @@
 from piece import *
+from constantes import anti
 
 class anti(Piece): 
-    def __init__(self, x, y, coin_image):
+    def __init__(self, x, y, anti):
         self.x = x
         self.y = y
-        self.coin_image = pygame.transform.scale(coin_image, (taille_case, taille_case))
+        self.anti = pygame.transform.scale(anti, (taille_case, taille_case))
 
     def collision(self, personnage):
             if (personnage.x == self.x) and (personnage.y == self.y):
@@ -14,7 +15,7 @@ class anti(Piece):
                     new_y = random.randint(personnage.y + 3 , case_max_y - 1)
 
                     pieces = []
-                    pieces.append(Piece(new_x, new_y, self.coin_image))
+                    pieces.append(Piece(new_x, new_y, self.anti))
 
                     if personnage.x == new_x and personnage.y == new_y:
                         break

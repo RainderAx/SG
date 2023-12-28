@@ -17,3 +17,4 @@ violet = (148,113,220)
 
 #skin
 coin_image = pygame.image.load("coin.jpg")
+anti = pygame.image.load("anti.jpg")
