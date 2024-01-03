@@ -1,4 +1,4 @@
-from constantes import *
+from constantes import vert, taille_case,case_max_x,case_max_y,   pygame
 
 class Personnage:
 

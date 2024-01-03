@@ -1,10 +1,10 @@
 import sys
 
 from snake2 import NvPers
-from snake import *
+from snake import Personnage
 from map import Carte
 from piece import Piece
-from constantes import blanc
+from constantes import *
 
 def main():
     pygame.init()
@@ -13,6 +13,7 @@ def main():
     fenetre = pygame.display.set_mode((largeur_fenetre, hauteur_fenetre))
     pygame.display.set_caption("Personnage sur une carte")
 
+    
    
     personnage = Personnage(1, 1)
     pers2 = NvPers(10,10)

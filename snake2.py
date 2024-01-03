@@ -1,4 +1,5 @@
 from snake import *
+from constantes import violet
 
 class NvPers(Personnage):  
         
