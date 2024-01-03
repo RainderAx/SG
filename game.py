@@ -1,13 +1,10 @@
 import sys
-import random
 
 from snake2 import NvPers
 from snake import *
-from map import *
+from map import Carte
 from piece import Piece
-
-
-
+from constantes import blanc
 
 def main():
     pygame.init()
@@ -25,7 +22,6 @@ def main():
     
     piece = Piece(random.randint(0, case_max_x -1), random.randint(0, case_max_y -1),coin_image)
     pieces.append(piece)
-
 
     
     while True:

@@ -1,13 +1,4 @@
-from constantes import hauteur_fenetre,pygame
-
-
-largeur_fenetre = 600
-hauteur_fenetre = 600
-taille_case = 50
-
-blanc = (255, 255, 255)
-noir = (0, 0, 0)
-
+from constantes import hauteur_fenetre,largeur_fenetre,taille_case,noir,    pygame
 
 class Carte:
 

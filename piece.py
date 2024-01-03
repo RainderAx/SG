@@ -1,6 +1,5 @@
-import random
 
-from constantes import case_max_x, case_max_y, taille_case,pygame
+from constantes import case_max_x, case_max_y, taille_case,pygame, random
 
 class Piece:
     

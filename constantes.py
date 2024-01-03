@@ -1,5 +1,5 @@
 import pygame 
-
+import random
 
 #taille_carte
 taille_case = 50
