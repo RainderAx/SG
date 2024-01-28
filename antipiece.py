@@ -1,7 +1,7 @@
 from piece import *
 
 
-class anti(Piece): 
+class anticoin(Piece): 
     def __init__(self, x, y, anti):
         self.x = x
         self.y = y
@@ -9,7 +9,7 @@ class anti(Piece):
 
     def collision(self, personnage):
         if (personnage.x == self.x) and (personnage.y == self.y):
-            personnage.score += 10
+            personnage.score -= 10
             while True:
                 new_x = random.choice([random.randint(0, max(0, personnage.x -3 )), random.randint(min(case_max_x - 1, personnage.x + 3), case_max_x - 1)])
                 new_y = random.choice([random.randint(0, max(0, personnage.y -3 )), random.randint(min(case_max_y - 1, personnage.y + 3), case_max_y - 1)])
@@ -27,4 +27,4 @@ class anti(Piece):
             return False
 
     def dessiner(self, fenetre):
-        fenetre.blit(self.anti (self.x * taille_case, self.y * taille_case, taille_case, taille_case))
+        fenetre.blit(self.anti, (self.x * taille_case, self.y * taille_case))

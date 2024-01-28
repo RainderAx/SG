@@ -5,6 +5,8 @@ from snake import Personnage
 from map import Carte
 from piece import Piece
 from constantes import *
+from antipiece import anticoin
+
 
 def main():
     pygame.init()
@@ -17,13 +19,17 @@ def main():
    
     personnage = Personnage(1, 1)
     pers2 = NvPers(10,10)
-  
+    
     pieces = []
 
     
     piece = Piece(random.randint(0, case_max_x -1), random.randint(0, case_max_y -1),coin_image)
     pieces.append(piece)
 
+    antipieces = []
+
+    antipiece = anticoin(random.randint(0, case_max_x -1), random.randint(0, case_max_y -1), anti)
+    antipieces.append(antipiece)
     
     while True:
         for event in pygame.event.get():
@@ -47,6 +53,14 @@ def main():
         for piece in pieces:
             piece.dessiner(fenetre)
 
+        for antipiece in antipieces:
+            antipiece.dessiner(fenetre)
+
+        if antipiece is not None:
+            antipiece.collision(personnage)
+            antipiece.collision(pers2)
+
+           
         
         personnage.collision()
         pers2.collision()
