@@ -1,9 +1,35 @@
-import pygame
+from constantes import noir, taille_case,case_max_x,case_max_y,   pygame, random
 
-def jouer_musique(fichier):
-    pygame.mixer.init()
-    pygame.mixer.music.load(fichier)
-    pygame.mixer.music.play()
+class Ennemi:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+        self.temps_ecoule = 0
+        self.temps_update = 500
 
-fichier_mp3 = "chemin/vers/ton/fichier.mp3"
-jouer_musique(fichier_mp3)
+    def deplacer(self):
+        self.x += random.randint(-1, 1)
+        self.y += random.randint(-1, 1)
+
+    def update(self, dt):
+        # On ajoute le temps écoulé depuis la dernière mise à jour
+        self.temps_ecoule += dt
+        
+        if self.temps_ecoule >= self.temps_update:
+            self.deplacer()
+            self.temps_ecoule = 0
+
+    def dessiner(self, fenetre):
+     
+        pygame.draw.rect(fenetre, noir, (self.x * taille_case, self.y * taille_case, taille_case, taille_case))
+
+    def collision(self, personnage):
+        if (personnage.x == self.x) and (personnage.y == self.y):
+            personnage.score += 10
+                      
+    def collision_mur(self):
+        if self.x < 0 or self.x >= case_max_x:
+            self.x = self.x % (case_max_x)
+
+        elif self.y < 0 or self.y >= case_max_y:
+            self.y = self.y % (case_max_y)
