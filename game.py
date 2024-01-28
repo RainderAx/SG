@@ -6,6 +6,7 @@ from map import Carte
 from piece import Piece
 from constantes import *
 from antipiece import anticoin
+from broly import Ennemi
 import constantes
 
 
@@ -31,6 +32,8 @@ def main():
     antipiece = anticoin(random.randint(0, case_max_x -1), random.randint(0, case_max_y -1), anti)
     antipieces.append(antipiece)
     
+    broly = Ennemi(random.randint(0, case_max_x -1), random.randint(0, case_max_y -1))
+
     game_over = False
 
     while not game_over:
@@ -55,9 +58,16 @@ def main():
         for piece in pieces:
             piece.dessiner(fenetre)
 
-        if pers2.score  + personnage.score >= 50 :        
+        if pers2.score + personnage.score >= 50 :        
            antipiece.dessiner_antipieces(fenetre, antipieces, personnage, pers2)
-           
+
+        if personnage.score + pers2.score >= 40:
+            
+            broly.dessiner(fenetre)
+            broly.collision(personnage)
+            broly.collision(pers2)
+            broly.collision_mur()
+            
         
                  
         personnage.collision()
@@ -74,7 +84,7 @@ def main():
         texte_score = font.render("Score:" + str(pers2.score), True, violet)
         fenetre.blit(texte_score, (10, 100))
 
-        if personnage.score > 100:
+        if personnage.score > 150:
             font = pygame.font.Font(None, 36)
             texte_score = font.render("Vous avez gagné", True, vert)
             fenetre.blit(texte_score, (largeur_fenetre // 2 - texte_score.get_width() // 2, hauteur_fenetre // 2 - texte_score.get_height() // 2))
@@ -83,7 +93,7 @@ def main():
             pygame.quit()
             sys.exit()
 
-        if pers2.score > 100:
+        if pers2.score > 150:
             font = pygame.font.Font(None, 36)
             texte_score = font.render("Vous avez gagné", True, violet)
             fenetre.blit(texte_score, (largeur_fenetre // 2 - texte_score.get_width() // 2, hauteur_fenetre // 2 - texte_score.get_height() // 2))
