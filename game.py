@@ -46,6 +46,7 @@ def main():
             elif event.type == pygame.KEYDOWN:
                 personnage.deplacer(event.key)
                 pers2.deplacer(event.key)
+                broly.deplacer(event.key)
         
         fenetre.fill(blanc)
 

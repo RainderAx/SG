@@ -8,13 +8,31 @@ class Ennemi:
         self.temps_ecoule = 0
         self.temps_update = 500
 
-    def deplacer(self):
-        for i in range(0, 500):
-            new_x = self.x + random.randint(-1, 1)
-            new_y = self.y + random.randint(-1, 1)
-            self.x = new_x
-            self.y = new_y
-            
+    def deplacer(self, touche):
+        if touche == pygame.K_LEFT:
+            self.x += random.randint(-1, 1)       
+   
+        elif touche == pygame.K_RIGHT:
+            self.x += random.randint(-1, 1)       
+ 
+        elif touche == pygame.K_UP:
+            self.x += random.randint(-1, 1)       
+
+        elif touche == pygame.K_DOWN:
+            self.x += random.randint(-1, 1)       
+        
+        elif touche == pygame.K_q:
+            self.y += random.randint(-1, 1) 
+
+        elif touche == pygame.K_d:
+    
+            self.y += random.randint(-1, 1)
+        elif touche == pygame.K_z:
+   
+            self.y += random.randint(-1, 1)
+        elif touche == pygame.K_s:
+     
+            self.y += random.randint(-1, 1)
 
     def dessiner(self, fenetre):
      
