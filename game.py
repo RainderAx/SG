@@ -31,6 +31,8 @@ def main():
     antipiece = anticoin(random.randint(0, case_max_x -1), random.randint(0, case_max_y -1), anti)
     antipieces.append(antipiece)
     
+
+
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -53,15 +55,10 @@ def main():
         for piece in pieces:
             piece.dessiner(fenetre)
 
-        for antipiece in antipieces:
-            antipiece.dessiner(fenetre)
-
-        if antipiece is not None:
-            antipiece.collision(personnage)
-            antipiece.collision(pers2)
-
-           
+        if pers2.score  + personnage.score >= 30 :        
+           antipiece.dessiner_antipieces(fenetre, antipieces, personnage, pers2)
         
+                 
         personnage.collision()
         pers2.collision()
         piece.collision(personnage)

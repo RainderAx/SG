@@ -28,3 +28,10 @@ class anticoin(Piece):
 
     def dessiner(self, fenetre):
         fenetre.blit(self.anti, (self.x * taille_case, self.y * taille_case))
+
+    def dessiner_antipieces(self, fenetre, antipieces, personnage, pers2):
+        for antipiece in antipieces:
+            if antipiece is not None:
+                antipiece.dessiner(fenetre)
+                antipiece.collision(personnage)
+                antipiece.collision(pers2)
