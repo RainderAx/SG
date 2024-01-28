@@ -22,7 +22,6 @@ def main():
     pers2 = NvPers(10,10)
 
     pieces = []
-
     
     piece = Piece(random.randint(0, case_max_x -1), random.randint(0, case_max_y -1),coin_image)
     pieces.append(piece)
@@ -41,16 +40,14 @@ def main():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
-
-            
+          
             elif event.type == pygame.KEYDOWN:
                 personnage.deplacer(event.key)
                 pers2.deplacer(event.key)
                 broly.deplacer(event.key)
         
         fenetre.fill(blanc)
-
-       
+   
         Carte.dessiner(fenetre)
      
         personnage.dessiner(fenetre)
@@ -68,9 +65,7 @@ def main():
             broly.collision(personnage)
             broly.collision(pers2)
             broly.collision_mur()
-            
-        
-                 
+                       
         personnage.collision()
         pers2.collision()
         piece.collision(personnage)
@@ -107,8 +102,6 @@ def main():
 
         
         pygame.time.Clock().tick(10)
-
-        
-
+       
 if __name__ == "__main__":
     main()
