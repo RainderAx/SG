@@ -6,20 +6,20 @@ from map import Carte
 from piece import Piece
 from constantes import *
 from antipiece import anticoin
+import constantes
 
 
 def main():
     pygame.init()
 
-    
+    constantes.jouer_musique("logobi.mp3")
+
     fenetre = pygame.display.set_mode((largeur_fenetre, hauteur_fenetre))
     pygame.display.set_caption("Personnage sur une carte")
 
-    
-   
     personnage = Personnage(1, 1)
     pers2 = NvPers(10,10)
-    
+
     pieces = []
 
     
@@ -31,9 +31,9 @@ def main():
     antipiece = anticoin(random.randint(0, case_max_x -1), random.randint(0, case_max_y -1), anti)
     antipieces.append(antipiece)
     
+    game_over = False
 
-
-    while True:
+    while not game_over:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -55,8 +55,9 @@ def main():
         for piece in pieces:
             piece.dessiner(fenetre)
 
-        if pers2.score  + personnage.score >= 30 :        
+        if pers2.score  + personnage.score >= 50 :        
            antipiece.dessiner_antipieces(fenetre, antipieces, personnage, pers2)
+           
         
                  
         personnage.collision()
@@ -72,11 +73,31 @@ def main():
 
         texte_score = font.render("Score:" + str(pers2.score), True, violet)
         fenetre.blit(texte_score, (10, 100))
+
+        if personnage.score > 100:
+            font = pygame.font.Font(None, 36)
+            texte_score = font.render("Vous avez gagné", True, vert)
+            fenetre.blit(texte_score, (largeur_fenetre // 2 - texte_score.get_width() // 2, hauteur_fenetre // 2 - texte_score.get_height() // 2))
+            pygame.display.flip()
+            pygame.time.Clock().tick(10)
+            pygame.quit()
+            sys.exit()
+
+        if pers2.score > 100:
+            font = pygame.font.Font(None, 36)
+            texte_score = font.render("Vous avez gagné", True, violet)
+            fenetre.blit(texte_score, (largeur_fenetre // 2 - texte_score.get_width() // 2, hauteur_fenetre // 2 - texte_score.get_height() // 2))
+            pygame.display.flip()
+            pygame.time.Clock().tick(10)
+            pygame.quit()
+            sys.exit()
       
         pygame.display.flip()
 
         
         pygame.time.Clock().tick(10)
+
+        
 
 if __name__ == "__main__":
     main()

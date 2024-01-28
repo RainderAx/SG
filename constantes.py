@@ -18,3 +18,10 @@ violet = (148,113,220)
 #skin
 coin_image = pygame.image.load("coin.jpg")
 anti = pygame.image.load("anti.jpg")
+
+#musique
+def jouer_musique(fichier):
+    pygame.mixer.init()
+    pygame.mixer.music.load(fichier)
+    pygame.mixer.music.play()
+
