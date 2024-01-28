@@ -9,6 +9,7 @@ from antipiece import anticoin
 from broly import Ennemi
 from gojo  import Gojo
 import constantes
+from data import *
 
 
 def main():
@@ -49,7 +50,11 @@ def main():
                 pers2.deplacer(event.key)
                 broly.deplacer(event.key)
                 gojo.deplacer(event.key)
-        
+
+        donnees = collecter_donnees(personnage, pers2, gojo,broly)
+
+        ecrire_donnees_csv(donnees, 'donnees_partie.csv')
+
         fenetre.fill(blanc)
    
         Carte.dessiner(fenetre)
@@ -88,6 +93,8 @@ def main():
 
         texte_score = font.render("Score:" + str(pers2.score), True, violet)
         fenetre.blit(texte_score, (10, 100))
+
+
 
         if personnage.score > 150:
             font = pygame.font.Font(None, 36)

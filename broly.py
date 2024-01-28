@@ -4,8 +4,8 @@ class Ennemi:
     def __init__(self, x, y):
         self.x = x
         self.y = y
-        self.temps_ecoule = 0
-        self.temps_update = 500
+        self.score = 0
+
 
     def deplacer(self, touche):
         if touche == pygame.K_LEFT:
@@ -40,6 +40,7 @@ class Ennemi:
     def collision(self, personnage):
         if (personnage.x == self.x) and (personnage.y == self.y):
             personnage.score -= 10
+            self.score +=10
                       
     def collision_mur(self):
         if self.x < 0 or self.x >= case_max_x:
