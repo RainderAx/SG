@@ -1,5 +1,4 @@
 from constantes import noir, taille_case,case_max_x,case_max_y,   pygame, random
-from time import sleep as wait
 
 class Ennemi:
     def __init__(self, x, y):

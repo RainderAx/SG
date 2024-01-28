@@ -7,6 +7,7 @@ from piece import Piece
 from constantes import *
 from antipiece import anticoin
 from broly import Ennemi
+from gojo  import Gojo
 import constantes
 
 
@@ -32,6 +33,8 @@ def main():
     antipieces.append(antipiece)
     
     broly = Ennemi(random.randint(0, case_max_x -1), random.randint(0, case_max_y -1))
+    gojo = Gojo(random.randint(0, case_max_x -1), random.randint(0, case_max_y -1))
+
 
     game_over = False
 
@@ -45,6 +48,7 @@ def main():
                 personnage.deplacer(event.key)
                 pers2.deplacer(event.key)
                 broly.deplacer(event.key)
+                gojo.deplacer(event.key)
         
         fenetre.fill(blanc)
    
@@ -59,12 +63,17 @@ def main():
         if pers2.score + personnage.score >= 50 :        
            antipiece.dessiner_antipieces(fenetre, antipieces, personnage, pers2)
 
-        if personnage.score + pers2.score >= 40:
+        if personnage.score + pers2.score >= 70:
             
             broly.dessiner(fenetre)
             broly.collision(personnage)
             broly.collision(pers2)
             broly.collision_mur()
+
+            gojo.dessiner(fenetre)
+            gojo.collision(personnage)
+            gojo.collision(pers2)
+            gojo.collision_mur()
                        
         personnage.collision()
         pers2.collision()
