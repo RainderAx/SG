@@ -1,10 +1,10 @@
 from broly import *
 import numpy as np
-
-from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
+
+
 class Gojo(Ennemi):
-    def collecter_donnees(self, etat_jeu, score):
+    def collecter_donnees(self, etat_jeu):
         # Collecte les données pertinentes pour l'entraînement
         donnees = [
             self.x,
@@ -16,17 +16,20 @@ class Gojo(Ennemi):
         return donnees
     
     def entrainer_modele(self, X_train, y_train):
+        # Initialisez et entraînez le modèle
         model = LinearRegression()
-        model.fit(X_train, y_train)
+        model.fit(X_train[:, :4], y_train)  # Utilisez uniquement les 4 premières colonnes des données
         return model
     
     def predire_action(self, modele, donnees):
+        # Utilisez le modèle pour prédire l'action à partir des données
         X = np.array(donnees).reshape(1, -1) 
         action_predite = modele.predict(X)
         return action_predite
 
     def deplacer(self, etat_jeu):
-        donnees = self.collecter_donnees(etat_jeu, self.score)
+        # Collectez les données nécessaires
+        donnees = self.collecter_donnees(etat_jeu)
 
         # Chargez les données d'entraînement depuis un fichier CSV ou générées directement dans le jeu
         data = np.genfromtxt('donnees_partie.csv', delimiter=',', skip_header=1)
@@ -53,5 +56,6 @@ class Gojo(Ennemi):
             self.y -= 1
         elif action == 'bas':
             self.y += 1
+
 
 
