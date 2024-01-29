@@ -4,8 +4,12 @@ import csv
 def collecter_donnees(personnage, pers2, gojo,broly):
     # Collecter les données pertinentes
     donnees = {
-        'score_personnage': personnage.score,
-        'score_pers2': pers2.score,
+        'personnage_x': personnage.x,
+        'personnage_y': personnage.y,
+        
+        'pers2_x': pers2.x,
+        'pers2_y': pers2.y,
+
         'gojo_x': gojo.x,
         'gojo_y': gojo.y,
         'gojo_score' : gojo.score,

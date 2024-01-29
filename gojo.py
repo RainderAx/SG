@@ -1,57 +1,32 @@
 from broly import *
-import numpy as np
-
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression
 
 class Gojo(Ennemi):
-    def collecter_donnees(self, etat_jeu):
-        
-        donnees = {
-            'position_x': self.x,
-            'position_y': self.y,
-            'etat_jeu': etat_jeu
-            
-        }
-        return donnees
-    
-    def entrainer_modele(self, X_train, y_train):
-        
-        model = LinearRegression()
-        model.fit(X_train, y_train)
-        return model
-    
-    def predire_action(self, modele, donnees):
-        
-        X = np.array(donnees).reshape(1, -1) 
-        action_predite = modele.predict(X)
-        return action_predite
 
-    def deplacer(self, etat_jeu):
-        
-        donnees = self.collecter_donnees(etat_jeu)
+    def deplacer(self, touche):
+        if touche == pygame.K_LEFT:
+            self.y += random.randint(-1, 1)       
 
-        data = np.genfromtxt('donnees_partie.csv', delimiter=',', skip_header=1)
-        X_train = data[:, :-1]
-        y_train = data[:, -1]
+        elif touche == pygame.K_RIGHT:
+            self.y += random.randint(-1, 1)       
 
-        
-        modele = self.entrainer_modele(X_train, y_train)
+        elif touche == pygame.K_UP:
+            self.y += random.randint(-1, 1)       
 
-        
-        action_predite = self.predire_action(modele, donnees)
+        elif touche == pygame.K_DOWN:
+            self.y += random.randint(-1, 1)       
 
-        
-        self.execute_action(action_predite)
+        elif touche == pygame.K_q:
+            self.x += random.randint(-1, 1) 
 
-    def execute_action(self, action):
-        
-        if action == 'gauche':
-            self.x -= 1
-        elif action == 'droite':
-            self.x += 1
-        elif action == 'haut':
-            self.y -= 1
-        elif action == 'bas':
-            self.y += 1
+        elif touche == pygame.K_d:
+            self.x += random.randint(-1, 1)
 
+        elif touche == pygame.K_z:
+            self.x += random.randint(-1, 1)
+
+        elif touche == pygame.K_s:     
+            self.x += random.randint(-1, 1)
+
+def dessiner(self, fenetre):
+     
+        pygame.draw.rect(fenetre, (255,0,255), (self.x * taille_case, self.y * taille_case, taille_case, taille_case))
