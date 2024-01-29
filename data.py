@@ -6,8 +6,10 @@ def collecter_donnees(personnage, pers2, gojo,broly):
     donnees = {
         'score_personnage': personnage.score,
         'score_pers2': pers2.score,
+        'gojo_x': gojo.x,
+        'gojo_y': gojo.y,
         'gojo_score' : gojo.score,
-        'broly_score': broly.score
+        
     }
     return donnees
 
