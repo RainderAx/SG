@@ -1,0 +1,15 @@
+Je sais c'est quel language ca vient d un bail en C#
+
+//Load sample data
+var sampleData = new MLModel1.ModelInput()
+{
+    Personnage_y = 1F,
+    Pers2_x = 10F,
+    Pers2_y = 10F,
+    Gojo_x = 1F,
+    Gojo_y = 1F,
+    Gojo_score = 0F,
+};
+
+//Load model and predict output
+var result = MLModel1.Predict(sampleData);
